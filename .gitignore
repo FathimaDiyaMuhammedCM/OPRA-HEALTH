@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+
+# Django
+*.sqlite3
+local_settings.py
+db.sqlite3
+media/
+
+# Large ML model files (too large for GitHub - use Git LFS or cloud storage)
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+*.h5
+*.pkl
+*.joblib
+
+# Checkpoint directories (contain large optimizer states)
+myapp/emotion_model/checkpoint-*/
+myapp/emotion_model/checkpoint*/
+
+# Saved models directory
+myapp/saved_models/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+myapp/logs/
+
+# Captured faces (runtime data)
+myapp/captured_faces/

@@ -1,0 +1,242 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusWorkWave | Campus Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6366f1;     /* Indigo */
+      --primary-dark: #4e50c1;
+      --accent: #8b5cf6;      /* Purple accent */
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --gray: #64748b;
+    }
+
+    * { margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="800" r="200" fill="%23ffffff" opacity="0.08"/><circle cx="800" cy="200" r="250" fill="%238b5cf6" opacity="0.1"/></svg>') no-repeat center;
+      background-size: cover;
+      pointer-events: none;
+    }
+
+    .login-card {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+      padding: 50px 40px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: slideUp 0.8s ease-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 20px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    p.tagline {
+      color: var(--gray);
+      font-size: 15px;
+      margin-bottom: 35px;
+      font-weight: 500;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 16px 20px 16px 52px;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      font-size: 16px;
+      background: #f8fafc;
+      transition: all 0.3s ease;
+      color: var(--text);
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+      font-size: 18px;
+      z-index: 2;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-login:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.45);
+    }
+
+    .btn-login:active {
+      transform: translateY(-1px);
+    }
+
+    .links {
+      margin-top: 28px;
+      font-size: 14.5px;
+      color: var(--gray);
+    }
+
+    .links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .messages {
+      margin-top: 20px;
+      padding: 12px;
+      background: #fee2e2;
+      border-radius: 12px;
+      color: #991b1b;
+      font-size: 14px;
+      font-weight: 500;
+      display: {% if messages %}block{% else %}none{% endif %};
+    }
+
+    .footer-text {
+      margin-top: 35px;
+      font-size: 13px;
+      color: var(--gray);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="logo">
+      <i class="fas fa-briefcase"></i>
+    </div>
+    <h2>WorkWave</h2>
+    <p class="tagline">Campus Jobs • Internships • Opportunities</p>
+
+    <form method="post" action="/myapp/login_post/">
+      {% csrf_token %}
+
+      <div class="input-group">
+        <input type="text" name="username" placeholder="Username or Email" required autocomplete="username">
+        <i class="fas fa-user"></i>
+      </div>
+
+      <div class="input-group">
+        <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+        <i class="fas fa-lock"></i>
+      </div>
+
+      <button type="submit" class="btn-login">Sign In</button>
+
+      <div class="links">
+        <!-- <a href="/myapp/tele_signup_get/">Create Account</a> • -->
+        <a href="/myapp/and_forget_password/">Forgot Password?</a>
+      </div>
+
+      <div class="messages">
+        {% for message in messages %}
+          {{ message }}<br>
+        {% endfor %}
+      </div>
+
+    </form>
+
+    <div class="footer-text">
+      Secure • Fast • Made for Students
+    </div>
+  </div>
+
+</body>
+</html>
